@@ -1,33 +1,41 @@
 <img align="right" width="150" height="150" top="100" src="./public/readme.jpg">
 
-# femplate • [![tests](https://github.com/zeroknots/boilerplate.sol/actions/workflows/ci.yml/badge.svg?label=tests)](https://github.com/zeroknots/boilerplate.sol/actions/workflows/ci.yml) ![license](https://img.shields.io/github/license/zeroknots/boilerplate.sol?label=license) ![solidity](https://img.shields.io/badge/solidity-^0.8.17-lightgrey)
+# Boilerplate.sol ![license](https://img.shields.io/github/license/zeroknots/boilerplate.sol?label=license) ![solidity](https://img.shields.io/badge/solidity-^0.8.0-lightgrey)
 
-Boilerplate for Audits with Foundry
-
-### Usage
-
-**Modifiers**
-
+Foundry Boilerplate for Smart Contract Security Audits
+### Why?
 I often found myself rewriting the same boilerplate code when auditing new DeFi protocols.
 You always need multiple users and interact with the target contracts a certain way.
 
+### Usage
+import Boilerplate.sol and use it in your test:
+
+```solidity
+contract MyTest is Boilerplate
+```
 
 
-**Deployment & Verification**
+**User account boilerplate**
 
-Inside the [`utils/`](./utils/) directory are a few preconfigured scripts that can be used to deploy and verify contracts.
+Boilerplate.sol creates 5 users:
+```yml
+ATTACKER: 0x1337
+USER1: 0x1001
+USER2: 0x1002
+USER3: 0x1003
+USER4: 0x1004
+```
 
-Scripts take inputs from the cli, using silent mode to hide any sensitive information.
+When you write your test functions, simply use the Boilerplate.sol modifier `asUser()`
 
-_NOTE: These scripts are required to be _executable_ meaning they must be made executable by running `chmod +x ./utils/*`._
+```solidity
+function testApprove() public asUser(USER1) {
+  usdc.approve(address(0x1234), 100);
+}
+```
 
-_NOTE: these scripts will prompt you for the contract name and deployed addresses (when verifying). Also, they use the `-i` flag on `forge` to ask for your private key for deployment. This uses silent mode which keeps your private key from being printed to the console (and visible in logs)._
 
-
-### I'm new, how do I get started?
-
-We created a guide to get you started with: [GETTING_STARTED.md](./GETTING_STARTED.md).
-
+**Fork Deployments**
 
 ### Blueprint
 
@@ -36,17 +44,17 @@ lib
 ├─ forge-std — https://github.com/foundry-rs/forge-std
 ├─ solmate — https://github.com/transmissions11/solmate
 scripts
-├─ Deploy.s.sol — Example Contract Deployment Script
+├─ DeployParameters.s.sol — Deploy Contract with .json parameters
 src
-├─ Greeter — Example Contract
+├─ Parameters — Boilerplate to read .json file with deployed contract addresses
 test
-└─ Greeter.t — Example Contract Tests
+└─ Boilerplate.t — Boilerplate base for tests
 ```
 
 
 ### Notable Mentions
 
-- [femplate](https://github.com/refcell/femplate)
+- [femplate](https://github.com/zeroknots/femplate)
 - [foundry](https://github.com/foundry-rs/foundry)
 - [solmate](https://github.com/Rari-Capital/solmate)
 - [forge-std](https://github.com/brockelmore/forge-std)
