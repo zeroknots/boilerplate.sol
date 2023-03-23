@@ -11,7 +11,15 @@ You always need multiple users and interact with the target contracts a certain 
 import Boilerplate.sol and use it in your test:
 
 ```solidity
-contract MyTest is Boilerplate
+contract MyTest is Boilerplate {
+  function setUp() public {
+      makeAddr(); // this initializes addresses
+  }
+  function testFoo() public asUser(ATTACKER){
+    //pwn things here
+  }
+}
+
 ```
 
 

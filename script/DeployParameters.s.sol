@@ -26,11 +26,10 @@ contract DeployBoilerplate is Script {
     }
 
     function run(MyParameters memory params, address unsupportedProtocol) public returns (MockContract deployment) {
-
         // only deploy unsupported if this chain doesn't already have one
         if (unsupportedProtocol == address(0)) {
             unsupportedProtocol = address(new UnsupportedProtocol());
-            console2.log('UnsupportedProtocol deployed:', unsupportedProtocol);
+            console2.log("UnsupportedProtocol deployed:", unsupportedProtocol);
         }
 
         params = MyParameters({
