@@ -15,7 +15,7 @@ contract UnsupportedProtocol {
     }
 }
 
-contract DeployBoilerplate is Script {
+contract DeployWithParams is Script {
     using stdJson for string;
 
     function setUp() public {}
@@ -31,6 +31,7 @@ contract DeployBoilerplate is Script {
             unsupportedProtocol = address(new UnsupportedProtocol());
             console2.log("UnsupportedProtocol deployed:", unsupportedProtocol);
         }
+        console2.log("Permit2:", params.universalRouter);
 
         params = MyParameters({
             universalRouter: params.universalRouter = mapUnsupported(params.universalRouter, unsupportedProtocol),
@@ -40,6 +41,8 @@ contract DeployBoilerplate is Script {
             usdc: params.usdc = mapUnsupported(params.usdc, unsupportedProtocol),
             dai: params.dai = mapUnsupported(params.dai, unsupportedProtocol)
         });
+
+
 
         deployment = new MockContract(params);
         console2.log("MockContract deployed at", address(deployment));
@@ -53,6 +56,7 @@ contract DeployBoilerplate is Script {
         string memory root = vm.projectRoot();
         string memory json = vm.readFile(string.concat(root, "/", pathToJSON));
         bytes memory rawParams = json.parseRaw(".*");
+        console.logBytes(rawParams);
         (params, unsupportedProtocol) = abi.decode(rawParams, (MyParameters, address));
     }
 
