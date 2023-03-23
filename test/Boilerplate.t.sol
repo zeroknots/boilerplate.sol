@@ -24,7 +24,7 @@ contract Boilerplate is Test {
         activePrank = false;
     }
 
-    modifier su(address user) {
+    modifier asUser(address user) {
         suStart(user);
         _;
         suStop();
