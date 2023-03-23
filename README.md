@@ -1,14 +1,17 @@
 <img align="right" width="150" height="150" top="100" src="./public/readme.jpg">
 
-# femplate • [![tests](https://github.com/zeroknots/femplate/actions/workflows/ci.yml/badge.svg?label=tests)](https://github.com/zeroknots/femplate/actions/workflows/ci.yml) ![license](https://img.shields.io/github/license/zeroknots/femplate?label=license) ![solidity](https://img.shields.io/badge/solidity-^0.8.17-lightgrey)
+# femplate • [![tests](https://github.com/zeroknots/boilerplate.sol/actions/workflows/ci.yml/badge.svg?label=tests)](https://github.com/zeroknots/boilerplate.sol/actions/workflows/ci.yml) ![license](https://img.shields.io/github/license/zeroknots/boilerplate.sol?label=license) ![solidity](https://img.shields.io/badge/solidity-^0.8.17-lightgrey)
 
-Template for Foundry Projects.
+Boilerplate for Audits with Foundry
 
 ### Usage
 
-**Building & Testing**
+**Modifiers**
 
-Build the foundry project with `forge build`. Then you can run tests with `forge test`.
+I often found myself rewriting the same boilerplate code when auditing new DeFi protocols.
+You always need multiple users and interact with the target contracts a certain way.
+
+
 
 **Deployment & Verification**
 
