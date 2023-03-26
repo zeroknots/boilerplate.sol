@@ -6,5 +6,5 @@
 solc_version = '0.8.17'
 auto_detect_solc = false
 optimizer_runs = 1_000
-fs_permissions = [{ access = "read", path = "./src/deploy"}]
+fs_permissions = [{ access = "read", path = "./script/deploy"}]
 
