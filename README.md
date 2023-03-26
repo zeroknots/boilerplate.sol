@@ -2,7 +2,7 @@
 
 # Boilerplate.sol ![license](https://img.shields.io/github/license/zeroknots/boilerplate.sol?label=license) ![solidity](https://img.shields.io/badge/solidity-^0.8.0-lightgrey)
 
-Foundry Boilerplate for Smart Contract Security Audits:
+Foundry Boilerplate for Smart Contract Security Auditors and Devs
 
 ## User account Boilerplate
 
