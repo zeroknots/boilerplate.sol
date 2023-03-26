@@ -44,7 +44,7 @@ function testApprove() public asUser(USER1) {
 ```
 
 
-## json Boilerplate WIP
+## json Boilerplate
 
 Spin up a foundry deployment and tests that point to already deployed contracts.
 This can be useful to test against prod or auditing hardhat projects.
